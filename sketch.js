@@ -6,9 +6,12 @@ var engine, world;
 var ground1, ground2, ground3, box1
 var box2, box3, box4, box5, box6
 var box7, box8, box9, box10, box11
-var box12, box13, box14, box15, box16
+var box12, box13, box15, box16
 var box17, box18, box19, box20, box21, box22
+var box23, box24, box25, box26,box27;
 var hexagon, slingshot1;
+var a = false;
+var score1 = 0;
 
 function preload() {
     polygonImg = loadImage("polygon.png");
@@ -26,34 +29,51 @@ function setup(){
     ground1 = new Ground(width/2, height-20, width, 28);
     ground2 = new Ground(width/3 + 115, height-170, width/4, 10)
     ground3 = new Ground(width/2 + 410, height - 290, width/4, 10)
-    box1 = new Box(500, height - 195, 30, 30);
-    box2 = new Box(530, height - 195, 30, 30);
-    box3 = new Box(560, height - 195, 30, 30);
-    box4 = new Box(590, height - 195, 30, 30);
-    box5 = new Box(620, height - 195, 30, 30);
-    box6 = new Box(650, height - 195, 30, 30);
-    box7 = new Box(680, height - 195, 30, 30);
-    box8 = new Box(710, height - 195, 30, 30);
-    box9 = new Box(740, height - 195, 30, 30);
-    box10 = new Box(770, height - 195, 30, 30);
-    box11 = new Box(800, height - 195, 30, 30);
 
-    box12 = new Box(530, height - 225, 30, 30);
-    box13 = new Box(570, height - 225, 30, 30);
-    box14 = new Box(600, height - 225, 30, 30);
-    box15 = new Box(640, height - 225, 30, 30);
-    box16 = new Box(680, height - 225, 30, 30);
-    box17 = new Box(720, height - 225, 30, 30);
-    box18 = new Box(760, height - 225, 30, 30);
-    box19 = new Box(800, height - 225, 30, 30);
-    box20 = new Box(840, height - 225, 30, 30);
-    //box21 = new Box(770, height - 225, 30, 30);
-    //box22 = new Box(800, height - 225, 30, 30);
+    box1 = new Box(500, height - 195, 60, 60);
+    box2 = new Box(560, height - 195, 60, 60);
+    box3 = new Box(620, height - 195, 60, 60);
+    box4 = new Box(680, height - 195, 60, 60);
+    box5 = new Box(740, height - 195, 60, 60);
+    box6 = new Box(800, height - 195, 60, 60);
+
+    box7 = new Box(560, height - 260, 60, 60);
+    box8 = new Box(620, height - 260, 60, 60);
+    box9 = new Box(680, height - 260, 60, 60);
+    box10 = new Box(740, height - 260, 60, 60);
+    
+    box11 = new Box(620, height - 320, 60, 60);
+    box12 = new Box(680, height - 320, 60, 60);
+
+    box13 = new Box(650, height - 380, 60, 60);
+
+
+    box15 = new Box(1050+10, height - 325, 60, 60);
+    box16 = new Box(1110+10, height - 325, 60, 60);
+    box17 = new Box(1170+10, height - 325, 60, 60);
+    box18 = new Box(1230+10, height - 325, 60, 60);
+    box19 = new Box(1290 + 10, height - 325, 60, 60);
+    box20 = new Box(1350 + 10, height - 325, 60, 60);
+
+    box21 = new Box(1120, height - 375, 60, 60);
+    box22 = new Box(1180, height - 375, 60, 60);
+    box23 = new Box(1240, height - 375, 60, 60);
+    box24 = new Box(1300, height - 375, 60, 60);
+
+    box25 = new Box(1180, height - 435, 60, 60);
+    box26 = new Box(1240, height - 435, 60, 60);
+
+    box27 = new Box(1210, height - 495, 60, 60);
 }
 
-function draw(){
-    background(150);
+function draw()
+{
+
+    background("#00ffbb");
     Engine.update(engine);
+    fill(255);
+    textSize(15);
+    text("SCORE: " + score1, 1000, 90)
     ground1.display();
     ground2.display();
     ground3.display();
@@ -68,32 +88,39 @@ function draw(){
     box9.display();
     box10.display();
     box11.display();
-
     box12.display();
     box13.display();
-    box14.display();
     box15.display();
     box16.display();
     box17.display();
     box18.display();
     box19.display();
     box20.display();
-    //box21.display();
-    //box22.display();
+    box21.display();
+    box22.display();
+    box23.display();
+    box24.display();
+    box25.display();
+    box26.display();
+    box27.display();
 
     hexagon.display();
     slingshot1.display();
+    push();
     textSize(30);
+    fill("white");
     text("DRAG AND RELEASE THE HEXAGONAL STONE TO LAUNCH IT TOWARDS THE BOXES!!", 100, 40);
+    pop();
 }
 
-/*function keyPressed()
+function keyPressed()
 {
     if (keyCode == 32)
     {
         slingshot1.attach(hexagon.body);
+        Matter.Body.setPosition(hexagon.body, {x: 200, y: 300})
     }
-}*/
+}
 
 function mouseDragged()
 {
